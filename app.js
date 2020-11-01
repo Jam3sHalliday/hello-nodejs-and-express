@@ -11,16 +11,13 @@ app.use(express.json());
 // view engine
 app.set('view engine', 'ejs');
 
-//database connection
-const dbURI = 'mongodb+srv://jam3shalliday:4815162342Q@cluster0.pszej.mongodb.net/<node-auth>';
-mongoose.connect(dbURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-}).then(res => app.listen(3242))
-  .catch(err => console.log(err));
+// database connection
+const dbURI = 'mongodb+srv://jam3shalliday:4815162342Q@cluster0.pszej.mongodb.net/node-auth';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
+  .then((res) => app.listen(3242))
+  .catch((err) => console.log(err));
 
-//routes
+// routes
 app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', (req, res) => res.render('smoothies'));
 app.use(authRoutes);
